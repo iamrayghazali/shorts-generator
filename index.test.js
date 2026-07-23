@@ -75,7 +75,7 @@ test('split cuts a video into multiple sequential clips covering the whole thing
   const parts = fs.readdirSync(outDir).filter((f) => f.endsWith('.mp4')).sort()
 
   assert.ok(parts.length >= 2, `expected multiple parts, got ${parts.length}`)
-  assert.strictEqual(parts[0], '001.mp4')
+  assert.strictEqual(parts[0], 'Part 1 - landscape.mp4')
 
   // Sum of segment durations should be within a small tolerance of the original.
   const total = (await getDimensions(landscape)) && 4

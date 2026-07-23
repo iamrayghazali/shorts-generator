@@ -112,12 +112,12 @@ async function split(filePath, seconds) {
   const outDir = path.join(dir, `${base} - segments`)
   fs.mkdirSync(outDir, { recursive: true })
 
-  const outputTemplate = path.join(outDir, '%03d.mp4')
+  const outputTemplate = path.join(outDir, `Part %d - ${base}.mp4`)
 
   console.log(`\n✂️  Splitting into ~${seconds}s segments...\n`)
   // -c copy = lossless & fast. Cuts happen at keyframes, so segments are
   // approximately (not exactly) `seconds` long, but nothing is dropped.
-  // Clips are named 001.mp4, 002.mp4, ...
+  // Clips are named "Part 1 - <title>.mp4", "Part 2 - <title>.mp4", ...
   await run('ffmpeg', [
     '-i', filePath,
     '-c', 'copy',
